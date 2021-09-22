@@ -1,0 +1,164 @@
+#include<iostream>
+#include<conio.h>
+#include<string>
+using namespace std;
+
+class Bank
+{
+    char name[100], add[100], phone[100];
+    int y;
+    long balance;
+public:
+    void new_account();
+    void deposit_amount();
+    void withdraw_money();
+    void balance_enquiry();
+    void display_account();
+};
+void Bank:: new_account()
+{
+    cout<<"\t\t Enter Your Full Name: ";
+    cin.ignore();
+    cin >> name;
+    cout<<"\t\t Enter your Address: ";
+    cin.ignore();
+    cin >> add;
+    cout<<"\t\t Enter your 10 digit Mobile Number(Ex:- +91xxxxxxxxxx): ";
+    cin.ignore();
+    cin >> phone;
+    acty:
+    cout<<" CHOOSE THE TYPE OF ACCOUNT YOU WANT TO OPEN \n\t\t 1. SAVINGS ACCOUNT \n\t\t 2. CURRENT ACCOUNT"<<endl;
+    cout << " ";
+    cin>>y;
+    if (y == 1)
+    {
+        y = 1;
+    }
+    else if (y == 2)
+    {
+        y = 2;
+    }
+    else
+    {
+        cout << "Wrong option" << endl;
+        cout << " " << endl;
+        y = 0;
+        goto acty;
+    }
+    cout<<"\t\tEnter the amount you want to deposit into your account: ";
+    cin>>balance;
+    cout << " " << endl;
+    cout << " The balance in your account is: " << balance;
+}
+void Bank :: deposit_amount()
+{
+    int mon;
+    cout<<" Enter deposit amount: ";
+    cin>>mon;
+    balance = balance + mon;
+    cout<<" Updated account balance : " <<balance;
+}
+void Bank :: display_account()
+{
+    cout<<" Your full name is: "<<name<<endl;
+    cout << " Your current address is: " << add<<endl;
+    cout<<" Your current active phone number for this account is: "<<phone<<endl;
+    if (y == 1)
+    {
+        cout << " Your account type is: Savings Account" << endl;
+    }
+    else
+    {
+        cout << " Your account type is: Current Account" << endl;
+    }
+    cout<<" Available balance in your account (In Rupees): "<<balance<<endl;
+}
+void Bank :: withdraw_money()
+{
+    int amount;
+    cout<<" \n Withdraw ";
+    cout << " " << endl;
+    cout<< " Enter the amount you want to Withdraw: ";
+    cin>>amount;
+    if (amount > balance)
+    {
+        cout << " Insufficient balance " << endl;
+        cout << " Amount tried to withdraw: " << amount << endl;
+    }
+    else
+    {
+        balance = balance - amount;
+        cout << " Amount withdrawn: " << amount << endl;
+    }
+    cout<<" Current available balance : "<<balance;
+
+}
+int main()
+{   
+    
+    start:
+    char x;
+    int ch;
+    Bank obj;
+ 
+    
+        cout << "\n\n\t\t\t\t******************************************\n";
+        cout << "\t\t\t\t WELCOME TO INDIAN BANK MANAGMENT SYSTEM";
+        cout << "\n\t\t\t\t******************************************\n";
+
+        cout << "\t\t\t\t    ::MAIN MENU::\n";
+        cout << "\n\t\t\t\t1. NEW ACCOUNT";
+        cout << "\n\t\t\t\t2. DEPOSIT AMOUNT";
+        cout << "\n\t\t\t\t3. WITHDRAW AMOUNT";
+        cout << "\n\t\t\t\t4. DISPLAY ACCOUNT";
+        cout << "\n\t\t\t\t5. EXIT";
+        cout << "\n\n\t\t\t\tSelect Your Option (1-5): ";
+        cout << " ";
+        cin >> ch;
+        switch (ch)
+        {
+        case 1:
+            cout << " NEW ACCOUNT \n" << endl;
+            obj.new_account();
+            break;
+        case 2:
+            cout << " DEPOSIT MONEY \n" << endl;
+            obj.deposit_amount();
+            break;
+        case 3:
+            cout << "WITHDRAW AMOUNT \n" << endl;
+            obj.withdraw_money();
+            break;
+        case 4:
+            cout << "DISPLAY ACCOUNT \n" << endl;
+            obj.display_account();
+            break;
+        case 5:
+            if (ch == 5)
+            {
+                exit(1);
+            }
+        default:
+            cout << " THE OPTION YOU HAVE CHOOSEN DOESN'T EXIST IN OUR SYSTEM " << endl;
+        }
+    option:
+        cout << " " << endl;
+        cout << "\n To select another option, press Y \n" << endl;
+        cout << "\n To exit, press N " << endl;
+        cout << " " << endl;
+        cout << " ";
+        cin >> x;
+        if (x == 'n' || x == 'N')
+            exit(0);
+        else if (x == 'y' || x == 'Y')
+        {
+            goto start;
+        }
+        else 
+        {
+            cout << "Wrong option" << endl;
+            cout << " " << endl;
+            goto option;
+        }
+    
+}
