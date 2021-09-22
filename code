@@ -6,7 +6,7 @@ using namespace std;
 class Bank
 {
     char name[100], add[100], phone[100];
-    int y;
+    int y ;
     long balance;
 public:
     void new_account();
@@ -14,6 +14,8 @@ public:
     void withdraw_money();
     void balance_enquiry();
     void display_account();
+    void phone_change();
+    void add_change();
 };
 void Bank:: new_account()
 {
@@ -93,26 +95,51 @@ void Bank :: withdraw_money()
     cout<<" Current available balance : "<<balance;
 
 }
+void Bank :: phone_change()
+{
+    char newphone[100];
+    cout<<" Enter new phone number: ";
+    cin>>newphone;
+    for(int i=0;i<100;i++)
+        {
+            phone[i] = newphone[i];
+        }
+    cout<<" Updated phone number : " <<phone;
+}
+void Bank :: add_change()
+{
+    char newadd[100];
+    cout<<" Enter New Address : ";
+    cin>>newadd;
+    for(int i=0;i<100;i++)
+        {
+            add[i] = newadd[i];
+        }
+    cout<<" Updated Address : " <<add;
+}
+
 int main()
-{   
-    
+{
+
     start:
     char x;
     int ch;
     Bank obj;
- 
-    
-        cout << "\n\n\t\t\t\t******************************************\n";
-        cout << "\t\t\t\t WELCOME TO INDIAN BANK MANAGMENT SYSTEM";
-        cout << "\n\t\t\t\t******************************************\n";
+
+
+        cout << "\n\n\t\t\t\t****************\n";
+        cout << "\t\t\t\t WELCOME TO INDIAN BANK ";
+        cout << "\n\t\t\t\t****************\n";
 
         cout << "\t\t\t\t    ::MAIN MENU::\n";
         cout << "\n\t\t\t\t1. NEW ACCOUNT";
         cout << "\n\t\t\t\t2. DEPOSIT AMOUNT";
         cout << "\n\t\t\t\t3. WITHDRAW AMOUNT";
         cout << "\n\t\t\t\t4. DISPLAY ACCOUNT";
-        cout << "\n\t\t\t\t5. EXIT";
-        cout << "\n\n\t\t\t\tSelect Your Option (1-5): ";
+        cout << "\n\t\t\t\t5. CHANGE PHONE NUMBER";
+        cout << "\n\t\t\t\t6. CHANGE ADDRESS";
+        cout << "\n\t\t\t\t7. EXIT";
+        cout << "\n\n\t\t\t\tSelect Your Option (1-7): ";
         cout << " ";
         cin >> ch;
         switch (ch)
@@ -134,7 +161,15 @@ int main()
             obj.display_account();
             break;
         case 5:
-            if (ch == 5)
+            cout << "CHANGE PHONE NUMBER \n" << endl;
+            obj.phone_change();
+            break;
+        case 6:
+            cout << "CHANGE ADDRESS \n" << endl;
+            obj.add_change();
+            break;
+        case 7:
+            if (ch == 7)
             {
                 exit(1);
             }
@@ -154,11 +189,11 @@ int main()
         {
             goto start;
         }
-        else 
+        else
         {
             cout << "Wrong option" << endl;
             cout << " " << endl;
             goto option;
         }
-    
+
 }
